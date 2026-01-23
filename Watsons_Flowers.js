@@ -2,6 +2,47 @@
 // Dark Luxe E-commerce Experience
 
 // ===================================
+// Real Flower Image Loading
+// ===================================
+document.addEventListener('DOMContentLoaded', () => {
+    loadFlowerImages();
+});
+
+function loadFlowerImages() {
+    const productImages = document.querySelectorAll('.product-image[data-flower]');
+    
+    // Direct URLs to real flower photos from reliable free sources
+    const flowerImageUrls = [
+        'https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600&h=600&fit=crop', // Pink roses
+        'https://images.unsplash.com/photo-1496062031456-07b8f162a322?w=600&h=600&fit=crop', // Sunflowers
+        'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=600&h=600&fit=crop', // Colorful bouquet
+        'https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?w=600&h=600&fit=crop', // Purple flowers
+        'https://images.unsplash.com/photo-1464297162577-f5295c892194?w=600&h=600&fit=crop', // Desert flowers
+        'https://images.unsplash.com/photo-1487070183336-b863922373d4?w=600&h=600&fit=crop'  // White roses
+    ];
+    
+    productImages.forEach((imageContainer, index) => {
+        const imgElement = imageContainer.querySelector('.flower-image');
+        
+        if (imgElement && flowerImageUrls[index]) {
+            imgElement.style.opacity = '0';
+            imgElement.src = flowerImageUrls[index];
+            
+            imgElement.onload = function() {
+                imgElement.classList.add('loaded');
+                imgElement.style.opacity = '1';
+            };
+            
+            imgElement.onerror = function() {
+                console.log('Image failed to load, using fallback...');
+                // Fallback to a generic flower image
+                imgElement.src = 'https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?w=600&h=600&fit=crop';
+            };
+        }
+    });
+}
+
+// ===================================
 // Navbar Scroll Effect
 // ===================================
 const navbar = document.getElementById('navbar');

@@ -3,23 +3,885 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watson's Flowers | Chandler, AZ | Fresh Blooms, Bold Statements</title>
+    <title>Watson's Flower Shop | Chandler, AZ | Premium Floral Designs</title>
     <meta name="description" content="Chandler's premier florist. Same-day delivery, custom arrangements, and unforgettable floral experiences.">
-    <link rel="stylesheet" href="Watsons_Flowers.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===================================
+           Watson's Flowers - Elegant Garden
+           Sophisticated Design with Rich Imagery
+           =================================== */
+
+        /* CSS Variables */
+        :root {
+            /* Color Palette */
+            --deep-forest: #1a3a2e;
+            --sage-green: #7d9d88;
+            --soft-cream: #f8f4ed;
+            --warm-blush: #d4a5a5;
+            --deep-burgundy: #722f37;
+            --gold-accent: #c9a961;
+            --soft-white: #ffffff;
+            --charcoal: #2c2c2c;
+            
+            /* Typography */
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Jost', sans-serif;
+            
+            /* Shadows */
+            --shadow-soft: 0 10px 40px rgba(26, 58, 46, 0.15);
+            --shadow-medium: 0 15px 50px rgba(26, 58, 46, 0.2);
+            --shadow-strong: 0 20px 60px rgba(26, 58, 46, 0.3);
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--soft-cream);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 244, 237, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(26, 58, 46, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(248, 244, 237, 0.98);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--deep-forest);
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .logo-accent {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--sage-green);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--deep-forest);
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--warm-blush);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--warm-blush);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-phone {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--deep-burgundy);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--deep-forest);
+            position: relative;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            color: var(--warm-blush);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--deep-burgundy);
+            color: white;
+            font-size: 0.65rem;
+            padding: 0.15rem 0.35rem;
+            border-radius: 50%;
+            font-weight: 600;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--deep-forest);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Rose-Banner.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 58, 46, 0.75), rgba(114, 47, 55, 0.65));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 3px;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--soft-white);
+            color: var(--deep-forest);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--deep-forest);
+            transform: translateY(-2px);
+        }
+
+        /* Banner Sections */
+        .banner-section {
+            position: relative;
+            height: 450px;
+            margin: 4rem 0;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .banner-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(26, 58, 46, 0.85) 0%, rgba(26, 58, 46, 0.3) 60%);
+            display: flex;
+            align-items: center;
+            padding: 4rem;
+        }
+
+        .banner-content h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .banner-content p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--deep-forest);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .title-accent {
+            color: var(--warm-blush);
+            font-style: italic;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--sage-green);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--deep-burgundy);
+            color: white;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            font-weight: 500;
+            z-index: 10;
+        }
+
+        .product-badge.new {
+            background: var(--gold-accent);
+        }
+
+        .product-quick-view {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(26, 58, 46, 0.95);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .product-card:hover .product-quick-view {
+            transform: translateY(0);
+        }
+
+        .product-info {
+            padding: 1.8rem;
+        }
+
+        .product-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--deep-forest);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: var(--sage-green);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--deep-burgundy);
+        }
+
+        .add-to-cart {
+            background: var(--deep-forest);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            background: var(--warm-blush);
+            transform: scale(1.05);
+        }
+
+        /* Local Delivery Section */
+        .delivery-section {
+            background: linear-gradient(135deg, var(--deep-forest), var(--sage-green));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .delivery-section h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .delivery-form {
+            max-width: 800px;
+            margin: 2rem auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .delivery-form input,
+        .delivery-form select {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            min-width: 200px;
+        }
+
+        .delivery-form button {
+            padding: 1rem 3rem;
+            background: var(--warm-blush);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .delivery-form button:hover {
+            background: var(--gold-accent);
+            transform: scale(1.05);
+        }
+
+        .delivery-locations {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .location-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .location-link:hover {
+            background: white;
+            color: var(--deep-forest);
+            border-color: white;
+        }
+
+        /* Occasions Section */
+        .occasions-section {
+            background: white;
+        }
+
+        .occasions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .occasion-card {
+            text-align: center;
+            padding: 2rem;
+            border: 1px solid rgba(26, 58, 46, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .occasion-card:hover {
+            border-color: var(--warm-blush);
+            box-shadow: var(--shadow-soft);
+            transform: translateY(-5px);
+        }
+
+        .occasion-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .occasion-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--deep-forest);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--soft-cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--deep-forest);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            background: var(--deep-forest);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--deep-forest);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-item p {
+            color: var(--sage-green);
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(26, 58, 46, 0.2);
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--warm-blush);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--deep-forest);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.75rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--warm-blush);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--warm-blush);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .banner-overlay {
+                padding: 2rem;
+            }
+
+            .banner-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .delivery-form {
+                flex-direction: column;
+            }
+
+            .delivery-locations {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Floating Petals Background -->
-    <div class="floating-petals">
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-        <div class="petal"></div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -29,25 +891,20 @@
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#shop" class="nav-link">Shop</a></li>
                 <li><a href="#occasions" class="nav-link">Occasions</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#bestsellers" class="nav-link">Bestsellers</a></li>
+                <li><a href="#delivery" class="nav-link">Local Delivery</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="icon-btn search-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
-                    </svg>
-                </button>
+                <a href="tel:4809678797" class="nav-phone">(480) 967-8797</a>
                 <button class="icon-btn cart-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="9" cy="21" r="1"></circle>
                         <circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
-                    <span class="cart-badge">3</span>
+                    <span class="cart-badge">0</span>
                 </button>
                 <button class="hamburger" id="hamburger">
                     <span></span>
@@ -63,14 +920,13 @@
         <div class="hero-background"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-badge">🌸 Chandler's Premier Florist Since 1995</div>
+            <div class="hero-badge">Chandler's Premier Florist Since 1995</div>
             <h1 class="hero-title">
-                <span class="title-line">Fresh Blooms,</span>
-                <span class="title-line glow">Bold Statements</span>
+                Fresh Blooms,<br>Bold Statements
             </h1>
             <p class="hero-subtitle">Elevating every moment with artistry, passion, and unforgettable floral experiences</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary glow-btn">
+                <button class="btn btn-primary">
                     <span>Shop Collections</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -79,62 +935,30 @@
                 </button>
                 <button class="btn btn-secondary">Same-Day Delivery</button>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">10K+</span>
-                    <span class="stat-label">Happy Customers</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">5★</span>
-                    <span class="stat-label">Rated Experience</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">Same Day</span>
-                    <span class="stat-label">Delivery Available</span>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- Features Strip -->
-    <section class="features-strip">
-        <div class="feature-item">
-            <div class="feature-icon">🚚</div>
-            <span>Same-Day Delivery</span>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">💯</div>
-            <span>100% Satisfaction</span>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🌸</div>
-            <span>Fresh Daily</span>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🎨</div>
-            <span>Custom Designs</span>
-        </div>
-    </section>
-
-    <!-- Featured Products -->
-    <section class="featured-products" id="shop">
+    <!-- Bestsellers Section -->
+    <section class="featured-products" id="bestsellers">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">
-                    <span class="title-accent">Featured</span> Collections
+                    <span class="title-accent">Featured</span> Bestsellers
                 </h2>
                 <p class="section-subtitle">Handcrafted masterpieces for every occasion</p>
             </div>
 
             <div class="products-grid">
-                <div class="product-card" data-color="coral">
+                <!-- Product 1 -->
+                <div class="product-card">
                     <div class="product-image">
-                        <div class="product-badge new">NEW</div>
+                        <div class="product-badge new">BESTSELLER</div>
                         <div class="product-quick-view">Quick View</div>
+                        <img src="sku5180464.png" alt="Passionate Elegance">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Desert Sunset Romance</h3>
-                        <p class="product-description">Vibrant roses and lilies in warm desert hues</p>
+                        <h3 class="product-name">Passionate Elegance</h3>
+                        <p class="product-description">Stunning red roses and white lilies with delicate accents</p>
                         <div class="product-footer">
                             <span class="product-price">$89.99</span>
                             <button class="add-to-cart">
@@ -148,16 +972,18 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-color="orange">
+                <!-- Product 2 -->
+                <div class="product-card">
                     <div class="product-image">
-                        <div class="product-badge bestseller">BESTSELLER</div>
+                        <div class="product-badge">POPULAR</div>
                         <div class="product-quick-view">Quick View</div>
+                        <img src="sku7510217.png" alt="Garden Romance">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Golden Hour Luxury</h3>
-                        <p class="product-description">Premium sunflowers with elegant accents</p>
+                        <h3 class="product-name">Garden Romance</h3>
+                        <p class="product-description">Vibrant pink and white blooms with lush greenery</p>
                         <div class="product-footer">
-                            <span class="product-price">$125.00</span>
+                            <span class="product-price">$79.99</span>
                             <button class="add-to-cart">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="9" cy="21" r="1"></circle>
@@ -169,36 +995,18 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-color="yellow">
-                    <div class="product-image">
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Bright & Bold Celebration</h3>
-                        <p class="product-description">Cheerful mix of seasonal favorites</p>
-                        <div class="product-footer">
-                            <span class="product-price">$75.00</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" data-color="plum">
+                <!-- Product 3 -->
+                <div class="product-card">
                     <div class="product-image">
                         <div class="product-badge new">NEW</div>
                         <div class="product-quick-view">Quick View</div>
+                        <img src="sku10080628.png" alt="Classic Dozen">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Midnight Garden</h3>
-                        <p class="product-description">Deep purples and romantic darks</p>
+                        <h3 class="product-name">Classic Dozen</h3>
+                        <p class="product-description">Twelve elegant red and white roses in a crystal vase</p>
                         <div class="product-footer">
-                            <span class="product-price">$95.00</span>
+                            <span class="product-price">$99.99</span>
                             <button class="add-to-cart">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="9" cy="21" r="1"></circle>
@@ -210,15 +1018,17 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-color="coral">
+                <!-- Product 4 -->
+                <div class="product-card">
                     <div class="product-image">
                         <div class="product-quick-view">Quick View</div>
+                        <img src="sku11132192.webp" alt="Pure Elegance">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Arizona Bloom</h3>
-                        <p class="product-description">Desert-inspired with cacti accents</p>
+                        <h3 class="product-name">Pure Elegance</h3>
+                        <p class="product-description">Pristine white roses with baby's breath accents</p>
                         <div class="product-footer">
-                            <span class="product-price">$110.00</span>
+                            <span class="product-price">$85.99</span>
                             <button class="add-to-cart">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="9" cy="21" r="1"></circle>
@@ -230,16 +1040,131 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-color="orange">
+                <!-- Product 5 -->
+                <div class="product-card">
                     <div class="product-image">
-                        <div class="product-badge bestseller">BESTSELLER</div>
+                        <div class="product-badge">POPULAR</div>
                         <div class="product-quick-view">Quick View</div>
+                        <img src="sku12930486.png" alt="Spring Bliss">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Timeless Elegance</h3>
-                        <p class="product-description">Classic white roses and greenery</p>
+                        <h3 class="product-name">Spring Bliss</h3>
+                        <p class="product-description">Cheerful pink carnations and white daisies</p>
                         <div class="product-footer">
-                            <span class="product-price">$145.00</span>
+                            <span class="product-price">$69.99</span>
+                            <button class="add-to-cart">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge new">NEW</div>
+                        <div class="product-quick-view">Quick View</div>
+                        <img src="sku12930495.png" alt="Joyful Medley">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Joyful Medley</h3>
+                        <p class="product-description">Vibrant mix of roses, carnations and seasonal blooms</p>
+                        <div class="product-footer">
+                            <span class="product-price">$74.99</span>
+                            <button class="add-to-cart">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-quick-view">Quick View</div>
+                        <img src="sku14130907.png" alt="Sunshine Delight">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Sunshine Delight</h3>
+                        <p class="product-description">Bright sunflowers with red and orange accents</p>
+                        <div class="product-footer">
+                            <span class="product-price">$84.99</span>
+                            <button class="add-to-cart">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge">POPULAR</div>
+                        <div class="product-quick-view">Quick View</div>
+                        <img src="skuDE-777581-A.png" alt="Vibrant Celebration">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Vibrant Celebration</h3>
+                        <p class="product-description">Colorful gerbera daisies in a cheerful arrangement</p>
+                        <div class="product-footer">
+                            <span class="product-price">$72.99</span>
+                            <button class="add-to-cart">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-quick-view">Quick View</div>
+                        <img src="skusku4212060.png" alt="Carnation Charm">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Carnation Charm</h3>
+                        <p class="product-description">Beautiful assortment of multicolored carnations</p>
+                        <div class="product-footer">
+                            <span class="product-price">$64.99</span>
+                            <button class="add-to-cart">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 10 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <div class="product-badge new">NEW</div>
+                        <div class="product-quick-view">Quick View</div>
+                        <img src="skusku7741057.png" alt="Rainbow Delight">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Rainbow Delight</h3>
+                        <p class="product-description">Stunning mix of colorful roses and seasonal flowers</p>
+                        <div class="product-footer">
+                            <span class="product-price">$94.99</span>
                             <button class="add-to-cart">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="9" cy="21" r="1"></circle>
@@ -251,107 +1176,101 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="section-cta">
-                <button class="btn btn-outline-bright">View All Products</button>
+    <!-- Event Flowers Banner -->
+    <div class="container">
+        <div class="banner-section">
+            <img src="Watsons-Flowers-Events-Banner.jpg" alt="Event Flowers" class="banner-image">
+            <div class="banner-overlay">
+                <div class="banner-content">
+                    <h2>Event Flowers</h2>
+                    <p>From intimate gatherings to grand celebrations, we create stunning floral designs that transform your special moments into unforgettable memories.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sympathy Section -->
+    <div class="container">
+        <div class="banner-section">
+            <img src="Standing-Sprays.jpg" alt="Sympathy Arrangements" class="banner-image">
+            <div class="banner-overlay">
+                <div class="banner-content">
+                    <h2>Sympathy & Memorial</h2>
+                    <p>Express your deepest condolences with our elegant sympathy arrangements. We offer standing sprays, casket pieces, and thoughtful tributes delivered with care.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Local Delivery Section -->
+    <section class="delivery-section" id="delivery">
+        <div class="container">
+            <h2>Local Delivery - Chandler AZ Florist</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Serving the Greater Phoenix area with same-day delivery</p>
+            
+            <div class="delivery-form">
+                <input type="text" placeholder="Recipient Zip Code">
+                <select>
+                    <option>Choose Delivery Date</option>
+                    <option>Today</option>
+                    <option>Tomorrow</option>
+                    <option>Select Date</option>
+                </select>
+                <button>FIND ARRANGEMENTS</button>
+            </div>
+
+            <div class="delivery-locations">
+                <a href="#" class="location-link">GILBERT AZ FLORIST</a>
+                <a href="#" class="location-link">MESA AZ FLORIST</a>
+                <a href="#" class="location-link">PHOENIX AZ FLORIST</a>
+                <a href="#" class="location-link">SCOTTSDALE AZ FLORIST</a>
+                <a href="#" class="location-link">TEMPE AZ FLORIST</a>
+                <a href="#" class="location-link">HOSPITAL DELIVERY</a>
             </div>
         </div>
     </section>
 
     <!-- Occasions Section -->
-    <section class="occasions" id="occasions">
+    <section class="occasions-section" id="occasions">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Shop by <span class="title-accent">Occasion</span></h2>
-                <p class="section-subtitle">Perfect blooms for every moment</p>
+                <p class="section-subtitle">Find the perfect arrangement for every moment</p>
             </div>
 
             <div class="occasions-grid">
-                <div class="occasion-card" data-occasion="romance">
-                    <div class="occasion-icon">💕</div>
-                    <h3 class="occasion-name">Romance</h3>
-                    <p class="occasion-desc">Express your love with passion</p>
-                    <button class="occasion-btn">Explore</button>
+                <div class="occasion-card">
+                    <div class="occasion-icon">🎂</div>
+                    <h3>Birthday</h3>
+                    <p>Celebrate their special day</p>
                 </div>
-
-                <div class="occasion-card" data-occasion="celebration">
-                    <div class="occasion-icon">🎉</div>
-                    <h3 class="occasion-name">Celebration</h3>
-                    <p class="occasion-desc">Make every moment special</p>
-                    <button class="occasion-btn">Explore</button>
+                <div class="occasion-card">
+                    <div class="occasion-icon">💝</div>
+                    <h3>Anniversary</h3>
+                    <p>Mark your love story</p>
                 </div>
-
-                <div class="occasion-card" data-occasion="sympathy">
+                <div class="occasion-card">
+                    <div class="occasion-icon">💐</div>
+                    <h3>Just Because</h3>
+                    <p>Brighten someone's day</p>
+                </div>
+                <div class="occasion-card">
+                    <div class="occasion-icon">💍</div>
+                    <h3>Weddings</h3>
+                    <p>Your dream day florals</p>
+                </div>
+                <div class="occasion-card">
                     <div class="occasion-icon">🕊️</div>
-                    <h3 class="occasion-name">Sympathy</h3>
-                    <p class="occasion-desc">Comfort and remembrance</p>
-                    <button class="occasion-btn">Explore</button>
+                    <h3>Sympathy</h3>
+                    <p>Honor their memory</p>
                 </div>
-
-                <div class="occasion-card" data-occasion="justbecause">
-                    <div class="occasion-icon">✨</div>
-                    <h3 class="occasion-name">Just Because</h3>
-                    <p class="occasion-desc">Brighten someone's day</p>
-                    <button class="occasion-btn">Explore</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Watson's Section -->
-    <section class="why-watsons" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Why Choose <span class="title-accent">Watson's</span>?</h2>
-            </div>
-
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                    <h3 class="reason-title">Expert Florists</h3>
-                    <p class="reason-desc">25+ years of artistry and passion in every arrangement</p>
-                </div>
-
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="reason-title">100% Fresh Guarantee</h3>
-                    <p class="reason-desc">Hand-selected daily from the finest growers worldwide</p>
-                </div>
-
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </div>
-                    <h3 class="reason-title">Same-Day Delivery</h3>
-                    <p class="reason-desc">Order by 2pm for same-day delivery across Chandler</p>
-                </div>
-            </div>
-
-            <div class="stats-row">
-                <div class="stat-box">
-                    <span class="stat-num">10,000+</span>
-                    <span class="stat-label">Satisfied Customers</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-num">28</span>
-                    <span class="stat-label">Years in Business</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-num">5-Star</span>
-                    <span class="stat-label">Average Rating</span>
+                <div class="occasion-card">
+                    <div class="occasion-icon">🌸</div>
+                    <h3>Plants</h3>
+                    <p>Lasting beauty</p>
                 </div>
             </div>
         </div>
@@ -360,11 +1279,14 @@
     <!-- Contact Section -->
     <section class="contact-section" id="contact">
         <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get in <span class="title-accent">Touch</span></h2>
+                <p class="section-subtitle">We're here to help make your floral dreams a reality</p>
+            </div>
+
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h2 class="section-title">Get in <span class="title-accent">Touch</span></h2>
-                    <p class="contact-intro">We're here to help make your floral dreams a reality. Reach out anytime.</p>
-
+                    <h3>Visit Our Shop</h3>
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">
@@ -374,7 +1296,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4>Visit Us</h4>
+                                <h4>Our Location</h4>
                                 <p>123 E Chandler Blvd<br>Chandler, AZ 85225</p>
                             </div>
                         </div>
@@ -387,7 +1309,7 @@
                             </div>
                             <div>
                                 <h4>Call Us</h4>
-                                <p>(480) 555-ROSE<br>Mon-Sat: 9am-6pm</p>
+                                <p>(480) 967-8797<br>Mon-Sat: 9am-6pm</p>
                             </div>
                         </div>
 
@@ -400,7 +1322,7 @@
                             </div>
                             <div>
                                 <h4>Email Us</h4>
-                                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="98f0fdf4f4f7d8eff9ecebf7f6ebfef4f7effdeaebb6fbf7f5">[email&#160;protected]</a><br>We reply within 24 hours</p>
+                                <p>info@watsonsflowers.com<br>We reply within 24 hours</p>
                             </div>
                         </div>
                     </div>
@@ -431,7 +1353,7 @@
                         <div class="form-group">
                             <textarea placeholder="Your Message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary glow-btn">
+                        <button type="submit" class="btn btn-primary">
                             <span>Send Message</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -464,7 +1386,7 @@
                         </a>
                         <a href="#" class="social-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.68c.223-.198-.054-.308-.346-.11l-6.4 4.03-2.76-.918c-.6-.187-.612-.6.125-.89l10.782-4.156c.5-.176.943.11.78.89z"/>
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                             </svg>
                         </a>
                     </div>
@@ -473,10 +1395,10 @@
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#shop">Shop All</a></li>
+                        <li><a href="#bestsellers">Shop All</a></li>
                         <li><a href="#occasions">Occasions</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#delivery">Local Delivery</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -486,7 +1408,7 @@
                         <li><a href="#">Same-Day Delivery</a></li>
                         <li><a href="#">Wedding Flowers</a></li>
                         <li><a href="#">Corporate Events</a></li>
-                        <li><a href="#">Subscription Service</a></li>
+                        <li><a href="#">Sympathy Arrangements</a></li>
                     </ul>
                 </div>
 
@@ -506,4 +1428,63 @@
                 <div class="footer-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
-        
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const badge = document.querySelector('.cart-badge');
+                let count = parseInt(badge.textContent);
+                badge.textContent = count + 1;
+                
+                // Visual feedback
+                this.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+
+        // Hamburger menu toggle
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
