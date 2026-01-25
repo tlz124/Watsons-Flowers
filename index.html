@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watson's Flower Shop | Chandler, AZ | Premium Floral Designs</title>
-    <meta name="description" content="Chandler's premier florist. Same-day delivery, custom arrangements, and unforgettable floral experiences.">
+    <title>Premier Florist | Fresh Flowers & Custom Arrangements</title>
+    <meta name="description" content="Your local florist for fresh flowers, custom arrangements, and same-day delivery.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         /* ===================================
-           Watson's Flowers - Elegant Garden
-           Sophisticated Design with Rich Imagery
+           Generic Florist Template
+           Sophisticated Design with Placeholder Images
            =================================== */
 
         /* CSS Variables */
@@ -291,10 +291,23 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('Rose-Banner.jpg');
+            background: linear-gradient(135deg, var(--sage-green), var(--deep-forest));
+            z-index: 1;
+        }
+
+        /* Placeholder for hero image */
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            z-index: 1;
+            opacity: 0.4;
+            z-index: -1;
         }
 
         .hero-overlay {
@@ -412,12 +425,30 @@
             margin: 4rem 0;
             overflow: hidden;
             border-radius: 8px;
+            background: linear-gradient(135deg, var(--sage-green), var(--deep-forest));
         }
 
-        .banner-image {
+        .banner-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .banner-section.events::after {
+            background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .banner-section.sympathy::after {
+            background-image: url('https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
         }
 
         .banner-overlay {
@@ -430,6 +461,7 @@
             display: flex;
             align-items: center;
             padding: 4rem;
+            z-index: 2;
         }
 
         .banner-content h2 {
@@ -506,17 +538,66 @@
             width: 100%;
             height: 380px;
             overflow: hidden;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .product-image img {
+        /* Placeholder images using Unsplash */
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background-size: cover;
+            background-position: center;
             transition: transform 0.4s ease;
         }
 
-        .product-card:hover .product-image img {
+        .product-card:nth-child(1) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:nth-child(2) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1563241527-3004b7be0ffd?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:nth-child(3) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1455659817273-f96807779a8a?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:nth-child(4) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:nth-child(5) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:nth-child(6) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:nth-child(7) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:nth-child(8) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:nth-child(9) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:nth-child(10) .product-image::after {
+            background-image: url('https://images.unsplash.com/photo-1591886960571-74d43a9d4166?auto=format&fit=crop&w=600&q=80');
+        }
+
+        .product-card:hover .product-image::after {
             transform: scale(1.08);
         }
 
@@ -552,6 +633,7 @@
             font-weight: 500;
             letter-spacing: 1px;
             cursor: pointer;
+            z-index: 10;
         }
 
         .product-card:hover .product-quick-view {
@@ -1316,8 +1398,8 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">WATSON'S</span>
-                <span class="logo-accent">FLOWERS</span>
+                <span class="logo-text">YOUR FLORIST</span>
+                <span class="logo-accent">TAGLINE HERE</span>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -1327,7 +1409,7 @@
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="tel:4809678797" class="nav-phone">(480) 967-8797</a>
+                <a href="tel:1234567890" class="nav-phone">(123) 456-7890</a>
                 <button class="icon-btn cart-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="9" cy="21" r="1"></circle>
@@ -1356,7 +1438,7 @@
             <li><a href="#contact" class="mobile-menu-link">Contact</a></li>
         </ul>
         <div class="mobile-menu-contact">
-            <a href="tel:4809678797" class="mobile-menu-phone">📞 (480) 967-8797</a>
+            <a href="tel:1234567890" class="mobile-menu-phone">📞 (123) 456-7890</a>
         </div>
     </div>
 
@@ -1365,11 +1447,11 @@
         <div class="hero-background"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-badge">Chandler's Premier Florist Since 1995</div>
+            <div class="hero-badge">Your Local Premier Florist</div>
             <h1 class="hero-title">
-                Fresh Blooms,<br>Bold Statements
+                Fresh Blooms,<br>Beautiful Moments
             </h1>
-            <p class="hero-subtitle">Elevating every moment with artistry, passion, and unforgettable floral experiences</p>
+            <p class="hero-subtitle">Elevating every occasion with artistry, passion, and unforgettable floral experiences</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary">
                     <span>Shop Collections</span>
@@ -1388,7 +1470,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">
-                    <span class="title-accent">Featured</span> Bestsellers
+                    <span class="title-accent">Featured</span> Collections
                 </h2>
                 <p class="section-subtitle">Handcrafted masterpieces for every occasion</p>
             </div>
@@ -1399,11 +1481,10 @@
                     <div class="product-image">
                         <div class="product-badge new">BESTSELLER</div>
                         <div class="product-quick-view">Quick View</div>
-                        <img src="sku5180464.png" alt="Passionate Elegance">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Passionate Elegance</h3>
-                        <p class="product-description">Stunning red roses and white lilies with delicate accents</p>
+                        <h3 class="product-name">Elegant Romance</h3>
+                        <p class="product-description">Beautiful red roses with delicate white accents</p>
                         <div class="product-footer">
                             <span class="product-price">$89.99</span>
                             <button class="add-to-cart">
@@ -1422,11 +1503,10 @@
                     <div class="product-image">
                         <div class="product-badge">POPULAR</div>
                         <div class="product-quick-view">Quick View</div>
-                        <img src="sku7510217.png" alt="Garden Romance">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Garden Romance</h3>
-                        <p class="product-description">Vibrant pink and white blooms with lush greenery</p>
+                        <h3 class="product-name">Garden Delight</h3>
+                        <p class="product-description">Vibrant mixed blooms with lush greenery</p>
                         <div class="product-footer">
                             <span class="product-price">$79.99</span>
                             <button class="add-to-cart">
@@ -1445,11 +1525,10 @@
                     <div class="product-image">
                         <div class="product-badge new">NEW</div>
                         <div class="product-quick-view">Quick View</div>
-                        <img src="sku10080628.png" alt="Classic Dozen">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Classic Dozen</h3>
-                        <p class="product-description">Twelve elegant red and white roses in a crystal vase</p>
+                        <p class="product-description">Twelve elegant roses in a beautiful arrangement</p>
                         <div class="product-footer">
                             <span class="product-price">$99.99</span>
                             <button class="add-to-cart">
@@ -1467,11 +1546,10 @@
                 <div class="product-card">
                     <div class="product-image">
                         <div class="product-quick-view">Quick View</div>
-                        <img src="sku11132192.webp" alt="Pure Elegance">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Pure Elegance</h3>
-                        <p class="product-description">Pristine white roses with baby's breath accents</p>
+                        <p class="product-description">Pristine white blooms with delicate accents</p>
                         <div class="product-footer">
                             <span class="product-price">$85.99</span>
                             <button class="add-to-cart">
@@ -1490,11 +1568,10 @@
                     <div class="product-image">
                         <div class="product-badge">POPULAR</div>
                         <div class="product-quick-view">Quick View</div>
-                        <img src="sku12930486.png" alt="Spring Bliss">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Spring Bliss</h3>
-                        <p class="product-description">Cheerful pink carnations and white daisies</p>
+                        <p class="product-description">Cheerful seasonal flowers in vibrant colors</p>
                         <div class="product-footer">
                             <span class="product-price">$69.99</span>
                             <button class="add-to-cart">
@@ -1513,11 +1590,10 @@
                     <div class="product-image">
                         <div class="product-badge new">NEW</div>
                         <div class="product-quick-view">Quick View</div>
-                        <img src="sku12930495.png" alt="Joyful Medley">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Joyful Medley</h3>
-                        <p class="product-description">Vibrant mix of roses, carnations and seasonal blooms</p>
+                        <h3 class="product-name">Colorful Medley</h3>
+                        <p class="product-description">Vibrant mix of seasonal blooms</p>
                         <div class="product-footer">
                             <span class="product-price">$74.99</span>
                             <button class="add-to-cart">
@@ -1535,11 +1611,10 @@
                 <div class="product-card">
                     <div class="product-image">
                         <div class="product-quick-view">Quick View</div>
-                        <img src="sku14130907.png" alt="Sunshine Delight">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Sunshine Delight</h3>
-                        <p class="product-description">Bright sunflowers with red and orange accents</p>
+                        <h3 class="product-name">Serene Beauty</h3>
+                        <p class="product-description">Peaceful white arrangements for any occasion</p>
                         <div class="product-footer">
                             <span class="product-price">$84.99</span>
                             <button class="add-to-cart">
@@ -1558,11 +1633,10 @@
                     <div class="product-image">
                         <div class="product-badge">POPULAR</div>
                         <div class="product-quick-view">Quick View</div>
-                        <img src="skuDE-777581-A.png" alt="Vibrant Celebration">
                     </div>
                     <div class="product-info">
                         <h3 class="product-name">Vibrant Celebration</h3>
-                        <p class="product-description">Colorful gerbera daisies in a cheerful arrangement</p>
+                        <p class="product-description">Bright and cheerful mixed arrangement</p>
                         <div class="product-footer">
                             <span class="product-price">$72.99</span>
                             <button class="add-to-cart">
@@ -1580,11 +1654,10 @@
                 <div class="product-card">
                     <div class="product-image">
                         <div class="product-quick-view">Quick View</div>
-                        <img src="skusku4212060.png" alt="Carnation Charm">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Carnation Charm</h3>
-                        <p class="product-description">Beautiful assortment of multicolored carnations</p>
+                        <h3 class="product-name">Charming Bouquet</h3>
+                        <p class="product-description">Delightful assortment of fresh flowers</p>
                         <div class="product-footer">
                             <span class="product-price">$64.99</span>
                             <button class="add-to-cart">
@@ -1603,11 +1676,10 @@
                     <div class="product-image">
                         <div class="product-badge new">NEW</div>
                         <div class="product-quick-view">Quick View</div>
-                        <img src="skusku7741057.png" alt="Rainbow Delight">
                     </div>
                     <div class="product-info">
-                        <h3 class="product-name">Rainbow Delight</h3>
-                        <p class="product-description">Stunning mix of colorful roses and seasonal flowers</p>
+                        <h3 class="product-name">Premium Selection</h3>
+                        <p class="product-description">Luxurious mix of premium flowers</p>
                         <div class="product-footer">
                             <span class="product-price">$94.99</span>
                             <button class="add-to-cart">
@@ -1626,8 +1698,7 @@
 
     <!-- Event Flowers Banner -->
     <div class="container">
-        <div class="banner-section">
-            <img src="Watsons-Flowers-Events-Banner.jpg" alt="Event Flowers" class="banner-image">
+        <div class="banner-section events">
             <div class="banner-overlay">
                 <div class="banner-content">
                     <h2>Event Flowers</h2>
@@ -1639,8 +1710,7 @@
 
     <!-- Sympathy Section -->
     <div class="container">
-        <div class="banner-section">
-            <img src="Standing-Sprays.jpg" alt="Sympathy Arrangements" class="banner-image">
+        <div class="banner-section sympathy">
             <div class="banner-overlay">
                 <div class="banner-content">
                     <h2>Sympathy & Memorial</h2>
@@ -1653,8 +1723,8 @@
     <!-- Local Delivery Section -->
     <section class="delivery-section" id="delivery">
         <div class="container">
-            <h2>Local Delivery - Chandler AZ Florist</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Serving the Greater Phoenix area with same-day delivery</p>
+            <h2>Local Delivery Available</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Serving your local area with same-day delivery</p>
             
             <div class="delivery-form">
                 <input type="text" placeholder="Recipient Zip Code">
@@ -1668,11 +1738,11 @@
             </div>
 
             <div class="delivery-locations">
-                <a href="#" class="location-link">GILBERT AZ FLORIST</a>
-                <a href="#" class="location-link">MESA AZ FLORIST</a>
-                <a href="#" class="location-link">PHOENIX AZ FLORIST</a>
-                <a href="#" class="location-link">SCOTTSDALE AZ FLORIST</a>
-                <a href="#" class="location-link">TEMPE AZ FLORIST</a>
+                <a href="#" class="location-link">LOCAL AREA 1</a>
+                <a href="#" class="location-link">LOCAL AREA 2</a>
+                <a href="#" class="location-link">LOCAL AREA 3</a>
+                <a href="#" class="location-link">LOCAL AREA 4</a>
+                <a href="#" class="location-link">LOCAL AREA 5</a>
                 <a href="#" class="location-link">HOSPITAL DELIVERY</a>
             </div>
         </div>
@@ -1742,7 +1812,7 @@
                             </div>
                             <div>
                                 <h4>Our Location</h4>
-                                <p>123 E Chandler Blvd<br>Chandler, AZ 85225</p>
+                                <p>123 Main Street<br>Your City, State 12345</p>
                             </div>
                         </div>
 
@@ -1754,7 +1824,7 @@
                             </div>
                             <div>
                                 <h4>Call Us</h4>
-                                <p>(480) 967-8797<br>Mon-Sat: 9am-6pm</p>
+                                <p>(123) 456-7890<br>Mon-Sat: 9am-6pm</p>
                             </div>
                         </div>
 
@@ -1767,7 +1837,7 @@
                             </div>
                             <div>
                                 <h4>Email Us</h4>
-                                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f1989f979eb1869085829e9f82979d9e86948382df929e9c">[email&#160;protected]</a><br>We reply within 24 hours</p>
+                                <p>info@yourflorist.com<br>We reply within 24 hours</p>
                             </div>
                         </div>
                     </div>
@@ -1816,8 +1886,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h3 class="footer-logo">WATSON'S FLOWERS</h3>
-                    <p class="footer-tagline">Elevating moments since 1995</p>
+                    <h3 class="footer-logo">YOUR FLORIST</h3>
+                    <p class="footer-tagline">Creating beautiful moments</p>
                     <div class="social-links">
                         <a href="#" class="social-link">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1869,7 +1939,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 Watson's Flowers. All rights reserved. | Proudly serving Chandler, AZ</p>
+                <p>&copy; 2025 Your Florist. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
@@ -1878,7 +1948,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
