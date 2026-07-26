@@ -1,2027 +1,498 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premier Florist | Fresh Flowers & Custom Arrangements</title>
-    <meta name="description" content="Your local florist for fresh flowers, custom arrangements, and same-day delivery.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* ===================================
-           Generic Florist Template
-           Sophisticated Design with Placeholder Images
-           =================================== */
-
-        /* CSS Variables */
-        :root {
-            /* Color Palette */
-            --deep-forest: #1a3a2e;
-            --sage-green: #7d9d88;
-            --soft-cream: #f8f4ed;
-            --warm-blush: #d4a5a5;
-            --deep-burgundy: #722f37;
-            --gold-accent: #c9a961;
-            --soft-white: #ffffff;
-            --charcoal: #2c2c2c;
-            
-            /* Typography */
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body: 'Jost', sans-serif;
-            
-            /* Shadows */
-            --shadow-soft: 0 10px 40px rgba(26, 58, 46, 0.15);
-            --shadow-medium: 0 15px 50px rgba(26, 58, 46, 0.2);
-            --shadow-strong: 0 20px 60px rgba(26, 58, 46, 0.3);
-        }
-
-        /* Reset & Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background: var(--soft-cream);
-            color: var(--charcoal);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(248, 244, 237, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(26, 58, 46, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            background: rgba(248, 244, 237, 0.98);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .nav-logo {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .logo-text {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--deep-forest);
-            letter-spacing: 2px;
-            line-height: 1;
-        }
-
-        .logo-accent {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: var(--sage-green);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--deep-forest);
-            font-size: 0.95rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: var(--warm-blush);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--warm-blush);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .nav-phone {
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            color: var(--deep-burgundy);
-            text-decoration: none;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .icon-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--deep-forest);
-            position: relative;
-            padding: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .icon-btn:hover {
-            color: var(--warm-blush);
-        }
-
-        .cart-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: var(--deep-burgundy);
-            color: white;
-            font-size: 0.65rem;
-            padding: 0.15rem 0.35rem;
-            border-radius: 50%;
-            font-weight: 600;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 2px;
-            background: var(--deep-forest);
-            transition: all 0.3s ease;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(26, 58, 46, 0.98);
-            z-index: 999;
-            padding: 6rem 2rem 2rem;
-            overflow-y: auto;
-        }
-
-        .mobile-menu.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .mobile-menu-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 2rem;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .mobile-menu ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-family: var(--font-display);
-            transition: color 0.3s ease;
-        }
-
-        .mobile-menu ul li a:hover {
-            color: var(--warm-blush);
-        }
-
-        .mobile-menu-contact {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .mobile-menu-phone {
-            display: block;
-            color: var(--warm-blush);
-            font-size: 1.3rem;
-            font-family: var(--font-display);
-            text-decoration: none;
-            margin-bottom: 1rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 85vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin-top: 80px;
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--sage-green), var(--deep-forest));
-            z-index: 1;
-        }
-
-        /* Placeholder for hero image */
-        .hero-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.4;
-            z-index: -1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(26, 58, 46, 0.75), rgba(114, 47, 55, 0.65));
-            z-index: 2;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            color: white;
-            max-width: 900px;
-            padding: 2rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-badge {
-            display: inline-block;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 0.5rem 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
-            margin-bottom: 2rem;
-            font-weight: 400;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: 5rem;
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem;
-            font-weight: 300;
-            line-height: 1.6;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            animation: fadeInUp 1s ease 0.8s both;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 3px;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--soft-white);
-            color: var(--deep-forest);
-        }
-
-        .btn-primary:hover {
-            background: var(--gold-accent);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: var(--deep-forest);
-            transform: translateY(-2px);
-        }
-
-        /* Banner Sections */
-        .banner-section {
-            position: relative;
-            height: 450px;
-            margin: 4rem 0;
-            overflow: hidden;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--sage-green), var(--deep-forest));
-        }
-
-        .banner-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.3;
-            z-index: 1;
-        }
-
-        .banner-section.events::after {
-            background-image: url('https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .banner-section.sympathy::after {
-            background-image: url('https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .banner-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(26, 58, 46, 0.85) 0%, rgba(26, 58, 46, 0.3) 60%);
-            display: flex;
-            align-items: center;
-            padding: 4rem;
-            z-index: 2;
-        }
-
-        .banner-content h2 {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 400;
-            color: white;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .banner-content p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 500px;
-            line-height: 1.8;
-        }
-
-        /* Section Styling */
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 400;
-            color: var(--deep-forest);
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-
-        .title-accent {
-            color: var(--warm-blush);
-            font-style: italic;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--sage-green);
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-strong);
-        }
-
-        .product-image {
-            position: relative;
-            width: 100%;
-            height: 380px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Placeholder images using Unsplash */
-        .product-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.4s ease;
-        }
-
-        .product-card:nth-child(1) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:nth-child(2) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:nth-child(3) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:nth-child(4) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:nth-child(5) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1591886960571-74d43a9d4166?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:nth-child(6) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:nth-child(7) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:nth-child(8) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1562690868-60bbe7293e94?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:nth-child(9) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1520763185298-1b434c919102?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:nth-child(10) .product-image::after {
-            background-image: url('https://images.unsplash.com/photo-1591886960571-74d43a9d4166?auto=format&fit=crop&w=600&q=80');
-        }
-
-        .product-card:hover .product-image::after {
-            transform: scale(1.08);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--deep-burgundy);
-            color: white;
-            padding: 0.4rem 1rem;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            border-radius: 20px;
-            font-weight: 500;
-            z-index: 10;
-        }
-
-        .product-badge.new {
-            background: var(--gold-accent);
-        }
-
-        .product-quick-view {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(26, 58, 46, 0.95);
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            font-weight: 500;
-            letter-spacing: 1px;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .product-card:hover .product-quick-view {
-            transform: translateY(0);
-        }
-
-        .product-info {
-            padding: 1.8rem;
-        }
-
-        .product-name {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--deep-forest);
-            margin-bottom: 0.5rem;
-        }
-
-        .product-description {
-            font-size: 0.95rem;
-            color: var(--sage-green);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .product-price {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--deep-burgundy);
-        }
-
-        .add-to-cart {
-            background: var(--deep-forest);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .add-to-cart:hover {
-            background: var(--warm-blush);
-            transform: scale(1.05);
-        }
-
-        /* Local Delivery Section */
-        .delivery-section {
-            background: linear-gradient(135deg, var(--deep-forest), var(--sage-green));
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-
-        .delivery-section h2 {
-            font-family: var(--font-display);
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .delivery-form {
-            max-width: 800px;
-            margin: 2rem auto;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .delivery-form input,
-        .delivery-form select {
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            min-width: 200px;
-        }
-
-        .delivery-form button {
-            padding: 1rem 3rem;
-            background: var(--warm-blush);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-        }
-
-        .delivery-form button:hover {
-            background: var(--gold-accent);
-            transform: scale(1.05);
-        }
-
-        .delivery-locations {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .location-link {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .location-link:hover {
-            background: white;
-            color: var(--deep-forest);
-            border-color: white;
-        }
-
-        /* Occasions Section */
-        .occasions-section {
-            background: white;
-        }
-
-        .occasions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .occasion-card {
-            text-align: center;
-            padding: 2rem;
-            border: 1px solid rgba(26, 58, 46, 0.1);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .occasion-card:hover {
-            border-color: var(--warm-blush);
-            box-shadow: var(--shadow-soft);
-            transform: translateY(-5px);
-        }
-
-        .occasion-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .occasion-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--deep-forest);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: var(--soft-cream);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
-
-        .contact-info h3 {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            color: var(--deep-forest);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .contact-icon {
-            background: var(--deep-forest);
-            color: white;
-            padding: 1rem;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .contact-item h4 {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            color: var(--deep-forest);
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-item p {
-            color: var(--sage-green);
-            line-height: 1.6;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(26, 58, 46, 0.2);
-            border-radius: 4px;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--warm-blush);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--deep-forest);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .footer-tagline {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.75rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            background: var(--warm-blush);
-            transform: translateY(-3px);
-        }
-
-        .footer-col h4 {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-col ul li a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--warm-blush);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.9rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-
-            .nav-container {
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
-            .nav-phone {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero {
-                height: 70vh;
-                margin-top: 70px;
-            }
-
-            .hero-content {
-                padding: 1.5rem;
-            }
-
-            .hero-badge {
-                font-size: 0.75rem;
-                padding: 0.4rem 1rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .hero-title {
-                font-size: 3rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-
-            .section-header {
-                margin-bottom: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2.8rem;
-            }
-
-            .section-subtitle {
-                font-size: 1rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .product-card {
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .banner-section {
-                height: 350px;
-                margin: 2rem 0;
-            }
-
-            .banner-overlay {
-                padding: 2rem;
-            }
-
-            .banner-content h2 {
-                font-size: 2.2rem;
-            }
-
-            .banner-content p {
-                font-size: 1rem;
-            }
-
-            .delivery-section {
-                padding: 3rem 0;
-            }
-
-            .delivery-section h2 {
-                font-size: 2.2rem;
-                padding: 0 1rem;
-            }
-
-            .delivery-form {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-
-            .delivery-form input,
-            .delivery-form select {
-                width: 100%;
-                min-width: auto;
-            }
-
-            .delivery-form button {
-                width: 100%;
-            }
-
-            .delivery-locations {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-
-            .location-link {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-
-            .occasions-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .contact-form {
-                padding: 2rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .container {
-                padding: 0 1rem;
-            }
-
-            .nav-container {
-                padding: 0.8rem 1rem;
-            }
-
-            .logo-text {
-                font-size: 1.4rem;
-            }
-
-            .logo-accent {
-                font-size: 0.65rem;
-            }
-
-            .hero {
-                height: 60vh;
-                margin-top: 65px;
-            }
-
-            .hero-content {
-                padding: 1rem;
-            }
-
-            .hero-badge {
-                font-size: 0.7rem;
-                padding: 0.35rem 0.8rem;
-                margin-bottom: 1rem;
-            }
-
-            .hero-title {
-                font-size: 2.2rem;
-                line-height: 1.2;
-            }
-
-            .hero-subtitle {
-                font-size: 0.95rem;
-                margin-bottom: 2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-
-            .btn {
-                padding: 0.9rem 2rem;
-                font-size: 0.95rem;
-            }
-
-            section {
-                padding: 2.5rem 0;
-            }
-
-            .section-header {
-                margin-bottom: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-                line-height: 1.2;
-            }
-
-            .section-subtitle {
-                font-size: 0.95rem;
-                padding: 0 1rem;
-            }
-
-            .products-grid {
-                gap: 1.5rem;
-            }
-
-            .product-image {
-                height: 320px;
-            }
-
-            .product-info {
-                padding: 1.5rem;
-            }
-
-            .product-name {
-                font-size: 1.3rem;
-            }
-
-            .product-description {
-                font-size: 0.9rem;
-            }
-
-            .product-price {
-                font-size: 1.5rem;
-            }
-
-            .add-to-cart {
-                padding: 0.6rem 1.2rem;
-            }
-
-            .banner-section {
-                height: 280px;
-                margin: 1.5rem 0;
-                border-radius: 6px;
-            }
-
-            .banner-overlay {
-                padding: 1.5rem;
-            }
-
-            .banner-content h2 {
-                font-size: 1.8rem;
-                margin-bottom: 0.8rem;
-            }
-
-            .banner-content p {
-                font-size: 0.9rem;
-                line-height: 1.6;
-            }
-
-            .delivery-section {
-                padding: 2.5rem 0;
-            }
-
-            .delivery-section h2 {
-                font-size: 1.8rem;
-                margin-bottom: 1rem;
-            }
-
-            .delivery-form {
-                margin: 1.5rem auto;
-            }
-
-            .delivery-form input,
-            .delivery-form select,
-            .delivery-form button {
-                padding: 0.9rem 1.2rem;
-                font-size: 0.95rem;
-            }
-
-            .delivery-locations {
-                margin-top: 2rem;
-            }
-
-            .location-link {
-                font-size: 0.85rem;
-                padding: 0.6rem 1.2rem;
-            }
-
-            .occasions-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .occasion-card {
-                padding: 1.5rem;
-            }
-
-            .occasion-icon {
-                font-size: 2.5rem;
-            }
-
-            .occasion-card h3 {
-                font-size: 1.3rem;
-            }
-
-            .contact-grid {
-                gap: 2rem;
-            }
-
-            .contact-info h3 {
-                font-size: 1.6rem;
-            }
-
-            .contact-details {
-                gap: 1.5rem;
-            }
-
-            .contact-item {
-                gap: 1rem;
-            }
-
-            .contact-icon {
-                padding: 0.8rem;
-            }
-
-            .contact-icon svg {
-                width: 20px;
-                height: 20px;
-            }
-
-            .contact-item h4 {
-                font-size: 1.1rem;
-            }
-
-            .contact-item p {
-                font-size: 0.9rem;
-            }
-
-            .contact-form {
-                padding: 1.5rem;
-            }
-
-            .form-group {
-                margin-bottom: 1.2rem;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                padding: 0.9rem;
-                font-size: 0.95rem;
-            }
-
-            .footer {
-                padding: 3rem 0 1.5rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .footer-logo {
-                font-size: 1.6rem;
-            }
-
-            .footer-tagline {
-                font-size: 0.9rem;
-            }
-
-            .footer-col h4 {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
-            }
-
-            .footer-col ul li {
-                margin-bottom: 0.6rem;
-            }
-
-            .footer-col ul li a {
-                font-size: 0.9rem;
-            }
-
-            .footer-bottom {
-                padding-top: 1.5rem;
-                font-size: 0.85rem;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 0.8rem;
-                margin-top: 0.8rem;
-            }
-
-            .footer-links a {
-                font-size: 0.85rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Petal & Stem Floral Studio — Hand-crafted floral arrangements, custom bouquets, event florals, and local delivery in Tucson, AZ." />
+  <title>Petal & Stem — Floral Studio</title>
+  <link rel="stylesheet" href="Flowers_2.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">YOUR FLORIST</span>
-                <span class="logo-accent">TAGLINE HERE</span>
-            </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#occasions" class="nav-link">Occasions</a></li>
-                <li><a href="#bestsellers" class="nav-link">Bestsellers</a></li>
-                <li><a href="#delivery" class="nav-link">Local Delivery</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <a href="tel:1234567890" class="nav-phone">(123) 456-7890</a>
-                <button class="icon-btn cart-btn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                    </svg>
-                    <span class="cart-badge">0</span>
-                </button>
-                <button class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" id="mobileMenuClose">&times;</button>
-        <ul>
-            <li><a href="#home" class="mobile-menu-link">Home</a></li>
-            <li><a href="#occasions" class="mobile-menu-link">Occasions</a></li>
-            <li><a href="#bestsellers" class="mobile-menu-link">Bestsellers</a></li>
-            <li><a href="#delivery" class="mobile-menu-link">Local Delivery</a></li>
-            <li><a href="#contact" class="mobile-menu-link">Contact</a></li>
-        </ul>
-        <div class="mobile-menu-contact">
-            <a href="tel:1234567890" class="mobile-menu-phone">📞 (123) 456-7890</a>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="nav-logo">Petal <em>&</em> Stem</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#catalog" class="nav-link">Shop</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#delivery" class="nav-link">Delivery</a></li>
+      <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image:url('orange_flowers.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('purple_flower_arrangements.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('blue_flowers.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Tucson's Local Florist · Est. 2009</p>
+      <h1>Fresh flowers,<br /><em>delivered with care</em></h1>
+      <p class="hero-sub">Hand-crafted arrangements for every occasion.<br />Local delivery available throughout Tucson.</p>
+      <div class="hero-actions">
+        <a href="#catalog" class="btn-primary">Browse Arrangements</a>
+        <a href="#delivery" class="btn-ghost">Delivery Info</a>
+      </div>
+    </div>
+    <div class="hero-dots" id="hero-dots">
+      <button class="dot active" data-slide="0" aria-label="Slide 1"></button>
+      <button class="dot" data-slide="1" aria-label="Slide 2"></button>
+      <button class="dot" data-slide="2" aria-label="Slide 3"></button>
+    </div>
+  </section>
+
+  <!-- INTRO BAND -->
+  <div class="intro-band">
+    <div class="band-inner">
+      <div class="band-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Locally grown stems</span>
+      </div>
+      <div class="band-sep">·</div>
+      <div class="band-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Same-day arrangements</span>
+      </div>
+      <div class="band-sep">·</div>
+      <div class="band-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        <span>100% satisfaction guarantee</span>
+      </div>
+      <div class="band-sep">·</div>
+      <div class="band-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Tucson delivery available</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-image-wrap">
+        <img src="purple_flowers.jpg" alt="Purple and white arrangement" class="about-img-main" />
+        <img src="pink_flower.jpg" alt="Pink bougainvillea" class="about-img-accent" />
+      </div>
+      <div class="about-text">
+        <p class="section-label">Our Story</p>
+        <h2>A neighborhood studio<br />rooted in craft</h2>
+        <p>Petal & Stem was founded by Maria Delgado in 2009 out of a small corner shop on Elm Street. What started as a weekend farmers market stall grew into one of Tucson's most beloved floral studios — known for wild, textured arrangements that feel gathered from a garden, never manufactured.</p>
+        <p>Every stem is sourced from local growers when the season allows. Every arrangement is made by hand, same day. We believe flowers should feel alive — because they are.</p>
+        <div class="about-stats">
+          <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Years open</span></div>
+          <div class="stat"><span class="stat-num">Local</span><span class="stat-label">Sourced stems</span></div>
+          <div class="stat"><span class="stat-num">Same day</span><span class="stat-label">Made to order</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT CATALOG -->
+  <section class="catalog" id="catalog">
+    <div class="catalog-header">
+      <p class="section-label">Browse & Order</p>
+      <h2>Our arrangements</h2>
+      <p class="catalog-note">See something you love? Contact us to place your order — we'll confirm availability and arrange delivery or pickup.</p>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-background"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <div class="hero-badge">Your Local Premier Florist</div>
-            <h1 class="hero-title">
-                Fresh Blooms,<br>Beautiful Moments
-            </h1>
-            <p class="hero-subtitle">Elevating every occasion with artistry, passion, and unforgettable floral experiences</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">
-                    <span>Shop Collections</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </button>
-                <button class="btn btn-secondary">Same-Day Delivery</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bestsellers Section -->
-    <section class="featured-products" id="bestsellers">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">
-                    <span class="title-accent">Featured</span> Collections
-                </h2>
-                <p class="section-subtitle">Handcrafted masterpieces for every occasion</p>
-            </div>
-
-            <div class="products-grid">
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-badge new">BESTSELLER</div>
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Elegant Romance</h3>
-                        <p class="product-description">Beautiful red roses with delicate white accents</p>
-                        <div class="product-footer">
-                            <span class="product-price">$89.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-badge">POPULAR</div>
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Garden Delight</h3>
-                        <p class="product-description">Vibrant mixed blooms with lush greenery</p>
-                        <div class="product-footer">
-                            <span class="product-price">$79.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-badge new">NEW</div>
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Classic Dozen</h3>
-                        <p class="product-description">Twelve elegant roses in a beautiful arrangement</p>
-                        <div class="product-footer">
-                            <span class="product-price">$99.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Pure Elegance</h3>
-                        <p class="product-description">Pristine white blooms with delicate accents</p>
-                        <div class="product-footer">
-                            <span class="product-price">$85.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-badge">POPULAR</div>
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Spring Bliss</h3>
-                        <p class="product-description">Cheerful seasonal flowers in vibrant colors</p>
-                        <div class="product-footer">
-                            <span class="product-price">$69.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-badge new">NEW</div>
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Colorful Medley</h3>
-                        <p class="product-description">Vibrant mix of seasonal blooms</p>
-                        <div class="product-footer">
-                            <span class="product-price">$74.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Serene Beauty</h3>
-                        <p class="product-description">Peaceful white arrangements for any occasion</p>
-                        <div class="product-footer">
-                            <span class="product-price">$84.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-badge">POPULAR</div>
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Vibrant Celebration</h3>
-                        <p class="product-description">Bright and cheerful mixed arrangement</p>
-                        <div class="product-footer">
-                            <span class="product-price">$72.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Charming Bouquet</h3>
-                        <p class="product-description">Delightful assortment of fresh flowers</p>
-                        <div class="product-footer">
-                            <span class="product-price">$64.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <div class="product-badge new">NEW</div>
-                        <div class="product-quick-view">Quick View</div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-name">Premium Selection</h3>
-                        <p class="product-description">Luxurious mix of premium flowers</p>
-                        <div class="product-footer">
-                            <span class="product-price">$94.99</span>
-                            <button class="add-to-cart">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="9" cy="21" r="1"></circle>
-                                    <circle cx="20" cy="21" r="1"></circle>
-                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Flowers Banner -->
-    <div class="container">
-        <div class="banner-section events">
-            <div class="banner-overlay">
-                <div class="banner-content">
-                    <h2>Event Flowers</h2>
-                    <p>From intimate gatherings to grand celebrations, we create stunning floral designs that transform your special moments into unforgettable memories.</p>
-                </div>
-            </div>
-        </div>
+    <div class="catalog-filters">
+      <button class="cf-btn active" data-filter="all">All</button>
+      <button class="cf-btn" data-filter="bouquet">Bouquets</button>
+      <button class="cf-btn" data-filter="arrangement">Arrangements</button>
+      <button class="cf-btn" data-filter="event">Event Florals</button>
+      <button class="cf-btn" data-filter="seasonal">Seasonal</button>
     </div>
 
-    <!-- Sympathy Section -->
-    <div class="container">
-        <div class="banner-section sympathy">
-            <div class="banner-overlay">
-                <div class="banner-content">
-                    <h2>Sympathy & Memorial</h2>
-                    <p>Express your deepest condolences with our elegant sympathy arrangements. We offer standing sprays, casket pieces, and thoughtful tributes delivered with care.</p>
-                </div>
-            </div>
+    <div class="catalog-grid" id="catalog-grid">
+
+      <div class="catalog-card" data-category="arrangement">
+        <div class="catalog-img-wrap">
+          <img src="blue_flowers.jpg" alt="Garden box arrangement" />
+          <div class="catalog-badge">Best Seller</div>
         </div>
+        <div class="catalog-info">
+          <h3>Garden Box</h3>
+          <p class="catalog-desc">Blue hydrangea, white roses, and eucalyptus in a rustic wooden box. Perfect for the home or as a gift.</p>
+          <div class="catalog-footer">
+            <span class="catalog-price">$65</span>
+            <a href="#contact" class="catalog-order">Order Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card" data-category="bouquet">
+        <div class="catalog-img-wrap">
+          <img src="fruit_flower_bouquet.jpg" alt="Wildflower bouquet" />
+        </div>
+        <div class="catalog-info">
+          <h3>Wildflower Bouquet</h3>
+          <p class="catalog-desc">A lush mix of seasonal blooms — roses, ranunculus, and garden herbs. Changes with the season.</p>
+          <div class="catalog-footer">
+            <span class="catalog-price">$55</span>
+            <a href="#contact" class="catalog-order">Order Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card" data-category="bouquet">
+        <div class="catalog-img-wrap">
+          <img src="orange_flowers.jpg" alt="Harvest vase" />
+          <div class="catalog-badge">Seasonal</div>
+        </div>
+        <div class="catalog-info">
+          <h3>Harvest Vase</h3>
+          <p class="catalog-desc">Orange roses, snapdragons, and tulips in a glass vase tied with twine. Warm and vibrant.</p>
+          <div class="catalog-footer">
+            <span class="catalog-price">$70</span>
+            <a href="#contact" class="catalog-order">Order Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card" data-category="seasonal">
+        <div class="catalog-img-wrap">
+          <img src="pink_flower.jpg" alt="Garden blooms" />
+        </div>
+        <div class="catalog-info">
+          <h3>Garden Blooms</h3>
+          <p class="catalog-desc">Fresh-cut bougainvillea and seasonal garden flowers, bundled simply in kraft paper.</p>
+          <div class="catalog-footer">
+            <span class="catalog-price">$40</span>
+            <a href="#contact" class="catalog-order">Order Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card" data-category="event">
+        <div class="catalog-img-wrap">
+          <img src="purple_flower_arrangements.jpg" alt="Wedding arrangement" />
+          <div class="catalog-badge">Custom Quote</div>
+        </div>
+        <div class="catalog-info">
+          <h3>Wedding Florals</h3>
+          <p class="catalog-desc">Full event floral packages including bridal bouquets, centerpieces, and altar arrangements. Custom priced by scope.</p>
+          <div class="catalog-footer">
+            <span class="catalog-price">From $350</span>
+            <a href="#contact" class="catalog-order">Get a Quote →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="catalog-card" data-category="arrangement">
+        <div class="catalog-img-wrap">
+          <img src="purple_flowers.jpg" alt="Statement piece" />
+        </div>
+        <div class="catalog-info">
+          <h3>Statement Piece</h3>
+          <p class="catalog-desc">A dramatic mixed arrangement in a dark urn with trailing greenery. Makes any room unforgettable.</p>
+          <div class="catalog-footer">
+            <span class="catalog-price">$120</span>
+            <a href="#contact" class="catalog-order">Order Now →</a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Local Delivery Section -->
-    <section class="delivery-section" id="delivery">
-        <div class="container">
-            <h2>Local Delivery Available</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">Serving your local area with same-day delivery</p>
-            
-            <div class="delivery-form">
-                <input type="text" placeholder="Recipient Zip Code">
-                <select>
-                    <option>Choose Delivery Date</option>
-                    <option>Today</option>
-                    <option>Tomorrow</option>
-                    <option>Select Date</option>
-                </select>
-                <button>FIND ARRANGEMENTS</button>
-            </div>
+    <p class="catalog-cta-note">Don't see what you're looking for? <a href="#contact">Contact us</a> for a fully custom arrangement.</p>
+  </section>
 
-            <div class="delivery-locations">
-                <a href="#" class="location-link">LOCAL AREA 1</a>
-                <a href="#" class="location-link">LOCAL AREA 2</a>
-                <a href="#" class="location-link">LOCAL AREA 3</a>
-                <a href="#" class="location-link">LOCAL AREA 4</a>
-                <a href="#" class="location-link">LOCAL AREA 5</a>
-                <a href="#" class="location-link">HOSPITAL DELIVERY</a>
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="gallery-header">
+      <p class="section-label">Our Work</p>
+      <h2>Every arrangement,<br /><em>a little different</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item tall">
+        <img src="purple_flower_arrangements.jpg" alt="Wedding florals" />
+        <div class="gallery-label">Wedding Florals</div>
+      </div>
+      <div class="gallery-item">
+        <img src="blue_flowers.jpg" alt="Garden box" />
+        <div class="gallery-label">Garden Box</div>
+      </div>
+      <div class="gallery-item">
+        <img src="orange_flowers.jpg" alt="Harvest vase" />
+        <div class="gallery-label">Harvest Vase</div>
+      </div>
+      <div class="gallery-item wide">
+        <img src="fruit_flower_bouquet.jpg" alt="Wildflower bouquet" />
+        <div class="gallery-label">Wildflower Bouquet</div>
+      </div>
+      <div class="gallery-item">
+        <img src="pink_flower.jpg" alt="Garden blooms" />
+        <div class="gallery-label">Garden Blooms</div>
+      </div>
+      <div class="gallery-item">
+        <img src="purple_flowers.jpg" alt="Statement piece" />
+        <div class="gallery-label">Statement Piece</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY -->
+  <section class="delivery" id="delivery">
+    <div class="delivery-inner">
+      <div class="delivery-text">
+        <p class="section-label">Delivery & Pickup</p>
+        <h2>We bring the blooms<br />to your door</h2>
+        <p class="delivery-body">We offer local delivery throughout Tucson and surrounding areas. Orders must be placed by phone or through our contact form — we'll confirm availability and give you an estimated delivery window.</p>
+
+        <div class="delivery-zones">
+          <div class="zone-card zone-1">
+            <div class="zone-header">
+              <span class="zone-name">Zone 1 — Downtown & Midtown</span>
+              <span class="zone-fee">$8 delivery</span>
             </div>
+            <p>85701, 85705, 85706, 85711</p>
+            <p class="zone-hours">Mon – Sat · 10 am – 4 pm</p>
+          </div>
+          <div class="zone-card zone-2">
+            <div class="zone-header">
+              <span class="zone-name">Zone 2 — East & Northwest Tucson</span>
+              <span class="zone-fee">$14 delivery</span>
+            </div>
+            <p>85710, 85715, 85718, 85741, 85742</p>
+            <p class="zone-hours">Tue, Thu, Sat · 11 am – 3 pm</p>
+          </div>
+          <div class="zone-card zone-3">
+            <div class="zone-header">
+              <span class="zone-name">Zone 3 — Marana & Sahuarita</span>
+              <span class="zone-fee">$22 delivery</span>
+            </div>
+            <p>85653, 85658, 85629</p>
+            <p class="zone-hours">Saturday only · 10 am – 1 pm</p>
+          </div>
         </div>
-    </section>
 
-    <!-- Occasions Section -->
-    <section class="occasions-section" id="occasions">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Shop by <span class="title-accent">Occasion</span></h2>
-                <p class="section-subtitle">Find the perfect arrangement for every moment</p>
-            </div>
-
-            <div class="occasions-grid">
-                <div class="occasion-card">
-                    <div class="occasion-icon">🎂</div>
-                    <h3>Birthday</h3>
-                    <p>Celebrate their special day</p>
-                </div>
-                <div class="occasion-card">
-                    <div class="occasion-icon">💝</div>
-                    <h3>Anniversary</h3>
-                    <p>Mark your love story</p>
-                </div>
-                <div class="occasion-card">
-                    <div class="occasion-icon">💐</div>
-                    <h3>Just Because</h3>
-                    <p>Brighten someone's day</p>
-                </div>
-                <div class="occasion-card">
-                    <div class="occasion-icon">💍</div>
-                    <h3>Weddings</h3>
-                    <p>Your dream day florals</p>
-                </div>
-                <div class="occasion-card">
-                    <div class="occasion-icon">🕊️</div>
-                    <h3>Sympathy</h3>
-                    <p>Honor their memory</p>
-                </div>
-                <div class="occasion-card">
-                    <div class="occasion-icon">🌸</div>
-                    <h3>Plants</h3>
-                    <p>Lasting beauty</p>
-                </div>
-            </div>
+        <div class="pickup-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          <span>Free in-store pickup available Mon – Sat, 9 am – 5 pm at 412 Elm Street, Tucson AZ</span>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get in <span class="title-accent">Touch</span></h2>
-                <p class="section-subtitle">We're here to help make your floral dreams a reality</p>
-            </div>
+        <a href="#contact" class="btn-primary">Schedule a Delivery →</a>
+      </div>
 
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Visit Our Shop</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4>Our Location</h4>
-                                <p>123 Main Street<br>Your City, State 12345</p>
-                            </div>
-                        </div>
+      <div class="delivery-map">
+        <iframe
+          title="Petal &amp; Stem delivery area map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3374.4!2d-110.9747!3d32.2226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86d671aa0000001%3A0x0!2zMzLCsDEzJzIxLjQiTiAxMTDCsDU4JzI5LjAiVw!5e0!3m2!1sen!2sus!4v1680000000000"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
 
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4>Call Us</h4>
-                                <p>(123) 456-7890<br>Mon-Sat: 9am-6pm</p>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4>Email Us</h4>
-                                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="177e797178576e786265717b78657e64633974787a">[email&#160;protected]</a><br>We reply within 24 hours</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email Address" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Phone Number">
-                        </div>
-                        <div class="form-group">
-                            <select>
-                                <option>Select Occasion</option>
-                                <option>Wedding</option>
-                                <option>Birthday</option>
-                                <option>Anniversary</option>
-                                <option>Sympathy</option>
-                                <option>Just Because</option>
-                                <option>Corporate Event</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <span>Send Message</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="22" y1="2" x2="11" y2="13"></line>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-header">
+        <p class="section-label">Customer Reviews</p>
+        <h2>What our customers say</h2>
+        <div class="overall-rating">
+          <div class="stars-row">
+            <span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span>
+          </div>
+          <span class="rating-text">4.9 out of 5 · 127 reviews</span>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3 class="footer-logo">YOUR FLORIST</h3>
-                    <p class="footer-tagline">Creating beautiful moments</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+      <div class="testimonials-grid">
 
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#bestsellers">Shop All</a></li>
-                        <li><a href="#occasions">Occasions</a></li>
-                        <li><a href="#delivery">Local Delivery</a></li>
-                        <li><a href="#contact">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Same-Day Delivery</a></li>
-                        <li><a href="#">Wedding Flowers</a></li>
-                        <li><a href="#">Corporate Events</a></li>
-                        <li><a href="#">Sympathy Arrangements</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Customer Care</h4>
-                    <ul>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Delivery Info</a></li>
-                        <li><a href="#">Care Guide</a></li>
-                        <li><a href="#">Returns</a></li>
-                    </ul>
-                </div>
+        <div class="t-card featured">
+          <div class="t-stars">★★★★★</div>
+          <blockquote>"The wedding florals were absolutely breathtaking. Maria captured our vision perfectly — the altar arrangement stopped every single guest in their tracks. Worth every penny."</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">SR</div>
+            <div>
+              <strong>Sofia R.</strong>
+              <span>Wedding, October 2024</span>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Your Florist. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
-            </div>
+          </div>
         </div>
-    </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <blockquote>"I order the wildflower bouquet for my desk every week. It genuinely makes my Monday better. Delivery is always on time and the flowers last longer than anywhere else I've tried."</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">JM</div>
+            <div>
+              <strong>James M.</strong>
+              <span>Regular customer</span>
+            </div>
+          </div>
+        </div>
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <blockquote>"Ordered the Garden Box as a sympathy gift. It arrived beautifully packaged and my friend called me in tears — the good kind. I can't recommend this shop enough."</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">TL</div>
+            <div>
+              <strong>Teresa L.</strong>
+              <span>Gift delivery, March 2025</span>
+            </div>
+          </div>
+        </div>
 
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
+        <div class="t-card">
+          <div class="t-stars">★★★★☆</div>
+          <blockquote>"The Statement Piece arrangement I ordered for my dining table is still going strong after 10 days. The quality is exceptional and the studio itself is a joy to visit."</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">DK</div>
+            <div>
+              <strong>David K.</strong>
+              <span>In-store pickup</span>
+            </div>
+          </div>
+        </div>
 
-        // Add to cart functionality
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const badge = document.querySelector('.cart-badge');
-                let count = parseInt(badge.textContent);
-                badge.textContent = count + 1;
-                
-                // Visual feedback
-                this.style.transform = 'scale(0.9)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 200);
-            });
-        });
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <blockquote>"Called at 11am needing something for a last-minute anniversary dinner. They had a Harvest Vase ready for pickup by 1pm. Saved the day. My wife was so impressed."</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">RC</div>
+            <div>
+              <strong>Rafael C.</strong>
+              <span>Same-day pickup</span>
+            </div>
+          </div>
+        </div>
 
-        // Hamburger menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <blockquote>"Petal & Stem has done florals for three of our company events. Every time the arrangements are stunning, delivered on time, and the team is an absolute pleasure to work with."</blockquote>
+          <div class="t-author">
+            <div class="t-avatar">AL</div>
+            <div>
+              <strong>Amanda L.</strong>
+              <span>Corporate events</span>
+            </div>
+          </div>
+        </div>
 
-        if (hamburger) {
-            hamburger.addEventListener('click', function() {
-                mobileMenu.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        }
+      </div>
+    </div>
+  </section>
 
-        if (mobileMenuClose) {
-            mobileMenuClose.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        }
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <p class="section-label">Get in Touch</p>
+        <h2>Let's make<br />something beautiful</h2>
+        <p>Ready to order, or have questions about an arrangement? Fill out the form and we'll get back to you within one business day.</p>
+        <a href="tel:+15205550192" class="contact-phone">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          (520) 555-0192
+        </a>
+      </div>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+        </div>
+        <div class="form-group">
+          <label for="arrangement">Arrangement (optional)</label>
+          <select id="arrangement" name="arrangement">
+            <option value="">Select an arrangement...</option>
+            <option>Garden Box — $65</option>
+            <option>Wildflower Bouquet — $55</option>
+            <option>Harvest Vase — $70</option>
+            <option>Garden Blooms — $40</option>
+            <option>Wedding Florals — Custom quote</option>
+            <option>Statement Piece — $120</option>
+            <option>Custom arrangement</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us about your occasion, delivery address, or any special requests..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message →</button>
+        <p class="form-success" id="form-success">Thank you! We'll be in touch within one business day.</p>
+      </form>
+    </div>
+  </section>
 
-        // Close mobile menu when clicking on a link
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
+  <!-- LOCATION -->
+  <section class="location" id="location">
+    <div class="location-inner">
+      <div class="location-info">
+        <p class="section-label">Visit Us</p>
+        <h2>Come see the studio</h2>
+        <div class="hours-block">
+          <h3>Hours</h3>
+          <ul class="hours-list">
+            <li><span>Monday – Friday</span><span>9:00 am – 6:00 pm</span></li>
+            <li><span>Saturday</span><span>9:00 am – 4:00 pm</span></li>
+            <li><span>Sunday</span><span>Closed</span></li>
+          </ul>
+        </div>
+        <div class="address-block">
+          <h3>Address</h3>
+          <address>412 Elm Street<br />Tucson, AZ 85701</address>
+          <a href="tel:+15205550192" class="address-phone">(520) 555-0192</a>
+        </div>
+        <div class="social-block">
+          <h3>Follow Along</h3>
+          <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              Instagram
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              Facebook
+            </a>
+            <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.03-2.83.19-.77 1.28-5.43 1.28-5.43s-.33-.65-.33-1.62c0-1.52.88-2.65 1.98-2.65.93 0 1.38.7 1.38 1.54 0 .94-.6 2.34-.91 3.64-.26 1.09.54 1.97 1.6 1.97 1.92 0 3.4-2.02 3.4-4.95 0-2.59-1.86-4.4-4.52-4.4-3.08 0-4.89 2.31-4.89 4.7 0 .93.36 1.93.8 2.47a.32.32 0 01.07.31c-.08.34-.27 1.09-.3 1.24-.05.2-.17.24-.38.15-1.42-.66-2.3-2.75-2.3-4.42 0-3.6 2.61-6.9 7.53-6.9 3.95 0 7.02 2.82 7.02 6.57 0 3.92-2.47 7.07-5.9 7.07-1.15 0-2.24-.6-2.61-1.3l-.71 2.65c-.26.99-.95 2.23-1.41 2.98.06.02.12.03.18.04A10 10 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+              Pinterest
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe
+          title="Petal &amp; Stem location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3374.4!2d-110.9747!3d32.2226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86d671aa0000001%3A0x0!2zMzLCsDEzJzIxLjQiTiAxMTDCsDU4JzI5LjAiVw!5e0!3m2!1sen!2sus!4v1680000000000"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
 
-        // Close mobile menu when clicking outside
-        mobileMenu.addEventListen
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-logo">Petal <em>&</em> Stem</p>
+      <p class="footer-copy">© 2025 Petal & Stem Floral Studio · 412 Elm Street, Tucson AZ · <a href="tel:+15205550192">(520) 555-0192</a></p>
+      <p class="footer-credit">Site by <a href="https://flechawebdesign.com" target="_blank" rel="noopener">Flecha Web Design</a></p>
+    </div>
+  </footer>
+
+  <script src="Flowers_2.js"></script>
+</body>
+</html>
